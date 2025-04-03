@@ -49,7 +49,7 @@ setInterval(function() {
 function onStart() {
     let fietsElement = document.getElementById('fietsbeweging'); // Zorg dat het element bestaat
     const voeter = document.getElementById("footer");
-    if (!fietsElement || !footer) {
+    if (!fietsElement || !voeter) {
         console.error("Fiets of footer element niet gevonden.");
         return;
     }
@@ -67,19 +67,20 @@ function onStart() {
 
     function moveFiets() {
         let footerLeft = 0; // Linkerkant van de footer
+        let footerRight = window.innerWidth - fietsElement.offsetWidth; // Rechterkant rekening houdend met breedte van fiets
 
         // Verander de positie naar rechts of links afhankelijk van de richting
         position += direction * 1; // Pas de snelheid aan indien nodig
         fietsElement.style.left = position + "px";
-        // Controleer of de fiets de randen van de footer bereikt
-        if (position >= window.innerWidth - 10) {
-            
-            direction = -1;
-            postion-= 10; // Beweeg naar links
+        
+        // Controleer of de fiets de randen bereikt
+        if (position >= footerRight) {
+            direction = -1; // Beweeg naar links
+            position = footerRight; // Zet exact op de rand
             flipFiets(); // Draai de fiets om
         } else if (position <= footerLeft) {
             direction = 1; // Beweeg naar rechts
-            position += 10;
+            position = footerLeft; // Zet exact op de rand
             flipFiets(); // Draai de fiets om
         }
     }
@@ -89,9 +90,8 @@ function onStart() {
     fietsElement.style.position = "absolute";
     fietsElement.style.bottom = "-15px"; // Houd het binnen de footer
     position = 0; // Startpositie binnen de footer
+    flipFiets(); // Zet de initiële richting goed
 
     // Start de beweging
     setInterval(moveFiets, 7);
-};
-
-
+}
