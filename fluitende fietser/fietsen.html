@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slideshow</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body onload="onStart()">
+<header id="header">
+    <div class="logo">
+        <img src="Data2024 (2)/web/images/logo.png" onclick="window.location.href='index.html';" style="cursor:pointer;">
+
+    </div>
+
+    <input id="zoekbalk" type="search" placeholder="Zoek hier.">
+    <div class="dropdown">
+        <button class="dropdown-btn" onclick="toggleMenu()">fietsen ⬇️</button>
+        <div class="dropdown-content" id="dropdownMenu">
+            <a href="elektrische-fietsen.html">elektrische fietsen</a>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <button class="dropdown-btn" onclick="toggleMenu()">verhuur ⬇️</button>
+        <div class="dropdown-content" id="dropdownMenu">
+        <a href="fietsenhuren.html">fietsenhuren</a>
+        </div>
+    </div>
+
+
+
+</header>
+
+<div class="welkombericht  ">
+    <h1>Welkom op de verkoop van fietsen pagina </h1>
+</div>
+
+<div class="openingstijden-container">
+    <h2>🕒 Openingstijden Fluitende Fietser 🚲</h2>
+    <ul>
+        <li><span>Maandag:</span> 10:00 - 18:00</li>
+        <li><span>Dinsdag:</span> 09:00 - 18:00</li>
+        <li><span>Woensdag:</span> 09:00 - 18:00</li>
+        <li><span>Donderdag:</span> 09:00 - 20:00 (koopavond)</li>
+        <li><span>Vrijdag:</span> 09:00 - 18:00</li>
+        <li><span>Zaterdag:</span> 10:00 - 17:00</li>
+        <li><span>Zondag:</span> Gesloten</li>
+    </ul>
+</div>
+
+
+
+
+
+
+    <div class="grid-container-verkoop">
+            <!-- Slides -->
+            <div>
+                <a href="fiets1.html"><img src="slideshowtest/istockphoto-171586627-612x612.jpg"></a>
+                <p>Deze stoere stadsfiets is perfect voor dagelijks gebruik. Met zijn stevige frame en comfortabele
+                    zadel, is het de ideale keuze voor korte ritten door de stad of lange tochten in het weekend. </p>
+            </div>
+            <div>
+                <a href="fiets2.html"><img src="slideshowtest/ST_veloAX20_He.jpg"></a>
+                <p>De Flying Pigeon is een klassieke en betrouwbare fiets, perfect voor stadsverkeer. Met zijn iconische
+                    ontwerp en robuuste structuur is het de ideale keuze voor diegenen die stijl en functionaliteit
+                    willen combineren.</p>
+            </div>
+            <div>
+                <a href="fiets3.html"><img src="slideshowtest/petrol__09-T-Randonneur-Lite-Shimano-105-30g-Disc-Dia-DSC2206-petrol-1920x1200.png"></a>
+                <p>Deze moderne elektrische fiets is de perfecte keuze voor lange afstanden zonder inspanning. De
+                    krachtige motor en het gestroomlijnde ontwerp maken elke rit soepel en snel.</p>
+            </div>
+            <div>
+                <a href="fiets4.html">  <img src="slideshowtest/white-T-500-SHIMANO-DEORE-30-GANG-DISC.webp"></a>
+                <p>Deze sportieve racefiets is gemaakt voor snelheid. Met zijn lichtgewicht frame en aerodynamische
+                    ontwerp, is hij ideaal voor fietsliefhebbers die graag lange afstanden afleggen op verharde wegen.
+                </p>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+
+
+
+
+    <footer id="footer">
+        <div id="fietsbeweging">🚲</div>
+
+        <div class="footer-left">
+            <a href="overons.html">Over ons</a>
+            <a href="contact.html">Contact</a>
+            <a href="infomail.html">Info mail</a>
+            <a href="voorwaarden.html">Algemene voorwaarden</a>
+        </div>
+        <div class="footer-left-bottem">
+            <p>KVK: 88599665 | BTW NL999888492Z09
+        </p>
+
+        </div>
+
+
+        <div class="footer-right">
+            <a href="https://www.tiktok.com/@yourusername" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.instagram.com/yourusername" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/yourusername" target="_blank"><i class="fab fa-facebook"></i></a>
+        </div>
+    </footer>
+
+
+
+
+
+</body>
+<script src="script.js"></script>
+
+</html>
