@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slideshow</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body onload="onStart()">
+    <header id="header">
+        <input type="search" placeholder=" Zoek hier.">
+    </header>
+
+    <div class="container">
+        <br>
+        <br>
+        
+        <div class="contact-grid">
+            <div class="contact-form">
+                <h2>Neem contact met ons op</h2>
+                <form id="contactForm" onsubmit="return validateForm()">
+                    <div>
+                        <label for="voornaam">Voornaam:</label>
+                        <input type="text" id="voornaam" name="voornaam" required>
+                    </div>
+                    
+                    <div>
+                        <label for="achternaam">Achternaam:</label>
+                        <input type="text" id="achternaam" name="achternaam" required>
+                    </div>
+                    
+                    <div>
+                        <label for="email">E-mail:</label>
+                        <input type="email" id="email" name="email" required>
+                        <span id="emailError" class="error">Vul een geldig e-mailadres in</span>
+                    </div>
+                    
+                    <div>
+                        <label for="vraag">Uw vraag:</label>
+                        <textarea id="vraag" name="vraag" rows="5" required></textarea>
+                    </div>
+                    
+                    <button type="submit">Versturen</button>
+                </form>
+            </div>
+            
+            <div class="contact-info">
+                <h2>Onze gegevens</h2>
+                <p><strong>Adres:</strong> Fietsstraat 123, 5622 AB Eindhoven</p>
+                <p><strong>Telefoon:</strong> 06-12345678</p>
+                <p><strong>E-mail:</strong> info@fluitendefietser.nl</p>
+                
+                <div class="opening-hours">
+                    <h3>Openingstijden</h3>
+                    <table>
+                        <tr>
+                            <td>Maandag</td>
+                            <td>10:00 - 18:00</td>
+                        </tr>
+                        <tr>
+                            <td>Dinsdag</td>
+                            <td>09:00 - 18:00</td>
+                        </tr>
+                        <tr>
+                            <td>Woensdag</td>
+                            <td>09:00 - 18:00</td>
+                        </tr>
+                        <tr>
+                            <td>Donderdag</td>
+                            <td>09:00 - 20:00 (koopavond)</td>
+                        </tr>
+                        <tr>
+                            <td>Vrijdag</td>
+                            <td>09:00 - 18:00</td>
+                        </tr>
+                        <tr>
+                            <td>Zaterdag</td>
+                            <td>10:00 - 17:00</td>
+                        </tr>
+                        <tr>
+                            <td>Zondag</td>
+                            <td>Gesloten</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <h2>Wat wij bieden</h2>
+        <ul>
+            <li><strong>Fietsen voor iedereen</strong> – Van stadsfietsen en e-bikes tot racefietsen en mountainbikes.</li>
+            <li><strong>Professioneel onderhoud en reparatie</strong> – Deskundige service voor een veilige rit.</li>
+            <li><strong>Accessoires en onderdelen</strong> – Van sloten tot fietstassen en hoogwaardige onderdelen.</li>
+            <li><strong>Persoonlijk advies</strong> – Wij helpen je bij het kiezen van de perfecte fiets of accessoire.</li>
+        </ul>
+    </div>
+    <div class="map-container">
+        <h3>Onze locatie</h3>
+        <iframe 
+            width="100%" 
+            height="250" 
+            frameborder="0" 
+            scrolling="no" 
+            marginheight="0" 
+            marginwidth="0" 
+            src="https://www.openstreetmap.org/export/embed.html?bbox=5.593063%2C51.472249%2C5.598063%2C51.476249&amp;layer=mapnik&amp;marker=51.474249%2C5.595563" 
+            style="border: 1px solid #ccc">
+        </iframe>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+   <p>gebruik dit om one te vidnen alvast bedankt</p>
+    <footer id="footer">
+        <div id="fietsbeweging">🚲</div>
+
+        <div class="footer-left">
+            <a href="overons.html">Over ons</a>
+            <a href="contact.html">Contact</a>
+            <a href="voorwaarden.html">Algemene voorwaarden</a>
+        </div>
+        <div class="footer-left-bottem">
+            <p>KVK: 88599665 | BTW NL999888492Z09</p>
+        </div>
+
+        <div class="footer-right">
+            <a href="https://www.tiktok.com/@yourusername" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.instagram.com/yourusername" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/yourusername" target="_blank"><i class="fab fa-facebook"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        function validateForm() {
+            const email = document.getElementById('email').value;
+            const emailError = document.getElementById('emailError');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (!emailRegex.test(email)) {
+                emailError.style.display = 'block';
+                return false;
+            } else {
+                emailError.style.display = 'none';
+                return true;
+            }
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+
+
+</html>

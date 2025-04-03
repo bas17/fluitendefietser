@@ -1,0 +1,465 @@
+body {
+    overflow-x: hidden;
+}
+
+.slideshow-container {
+    top: 50%;
+    /* Zet de bovenkant op 50% van het scherm */
+    left: 18%;
+    /* Zet de linkerkant op 50% van het scherm */
+    max-width: 500px;
+    /* Max breedte van de slideshow */
+    width: 100%;
+    /* Zorg ervoor dat de slideshow zich aanpast aan het scherm */
+    border-radius: 10px;
+    border: 2px solid black;
+    grid-column: 1;
+}
+
+/* Slideshow afbeeldingen */
+.slide {
+    display: none;
+    text-align: center;
+}
+
+img {
+    width: 100%;
+    /* Zorg ervoor dat de afbeelding altijd de breedte van de container heeft */
+    height: 400px;
+    /* Stel een vaste hoogte in voor de afbeelding om consistentie te behouden */
+    object-fit: cover;
+    /* Zorgt ervoor dat de afbeelding netjes in de container wordt geschaald zonder vervorming */
+    border-radius: 10px;
+    position: relative;
+    /* Geen absolute positie, omdat de afbeelding binnen de container moet blijven */
+}
+
+/* Navigatiebollen */
+.dots-container {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.dot {
+    height: 12px;
+    width: 12px;
+    margin: 5px;
+    background-color: gray;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: black;
+}
+
+/* Fade effect */
+.fade {
+    animation: fadeEffect 1.5s;
+}
+
+@keyframes fadeEffect {
+    from {
+        opacity: 0.4;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+#fietsbeweging {
+    height: 100px;
+    width: 120px;
+    transform: translateX(-50%);
+    margin-bottom: 100px;
+    font-size: 30px;
+    margin-bottom: 0px;
+    position: absolute;
+}
+
+.welkombericht {
+    grid-column: 2;
+
+}
+
+.grid-container {
+    display: grid;
+    /* Zet de container als grid */
+    grid-template-columns: repeat(3, 1fr);
+    /* Maak 3 kolommen van gelijke grootte */
+    grid-gap: 20px;
+    /* Voeg ruimte tussen de items */
+    padding: 10px;
+    /* Voeg padding toe rondom de container */
+    height: 10px;
+    margin-top: 6%;
+    margin-bottom: 10%;
+}
+
+.footer-left a,
+.footer-right a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 14px;
+}
+
+
+
+.footer-left {
+    align-items: flex-start;
+    order: -1;
+    display: flex;
+   
+
+}
+
+.footer-right {
+    align-items: flex-end;
+
+    display: flex;
+}
+
+.footer-left a:hover,
+.footer-right a:hover {
+    text-decoration: underline;
+}
+
+.footer-right i {
+    font-size: 20px;
+    margin: 0 10px;
+}
+
+/* Vergroot de iconen bij hover */
+.footer-right a:hover i {
+    transform: scale(1.2);
+}
+
+/* Update the dropdown styling to position it on the left side of the header */
+.dropdown {
+    position: relative; /* Increased left margin */
+    float: left; /* Makes it align to the left */
+}
+
+/* You may also want to update the header to ensure proper alignment */
+#header {
+    background-color: rgb(33, 128, 223);
+    height: 75px;
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+    display: flex;
+    justify-content: flex-start; /* Changed from space-between to align items to the left */
+    align-items: center;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    left: 0;
+    position: absolute;
+    top: -10px;
+}
+#footer {
+    background-color: rgb(33, 128, 223);
+    height: 75px;
+    width: 100vw;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    position: fixed;
+    /* Zet het vast op de pagina */
+    bottom: 0px;
+    /* Zet het aan de onderkant */
+    left: 0;
+}
+
+.footer-left-bottem {
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: -17px;
+    left: 20px;
+    padding: 10px;
+    color: white;
+    font-size: x-small;
+}
+
+.dropdown button {
+    background-color: rgb(33, 128, 223);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+/* Het menu (verborgen standaard) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 150px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Menu-items */
+.dropdown-content a {
+    color: black;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Hover-effect */
+.dropdown-content a:hover {
+    background-color: rgb(29, 115, 201);
+    color: white;
+    transform: scale(1.05);
+}
+
+/* Laat het menu zien als je over de dropdown gaat */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+#zoekbalk {
+    justify-content: center;
+    background-color: whitesmoke;
+    height: 30px;
+    width: 300px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+.grid-container-verkoop {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 20px;
+    padding: 10px;
+    margin-top: 6%;
+    margin-bottom: 10%;
+}
+
+.grid-container-verkoop div {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.grid-container-verkoop a {
+    display: inline-block;
+    width: 70%;
+    text-decoration: none;
+    background-color: #f9f9f9;
+}
+
+.grid-container-verkoop img {
+    width: 80%;
+    max-width: 250px;
+    height: auto;
+    border-radius: 5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.grid-container-verkoop img:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+}
+.logo {
+    width: 40px; /* Vierkante grootte */
+    height: 40px; /* Zorgt ervoor dat het evenredig blijft */
+    border-radius: 0;
+    margin-right: 10px;
+}
+.logo img {
+    width: 100%; /* Zorgt ervoor dat de afbeelding de grootte van de container aanneemt */
+    height: 100%; /* Zorgt ervoor dat de afbeelding de grootte van de container aanneemt */ 
+}
+.historie1 {
+    position: absolute;
+    top: 80px; /* Adjust based on your header height */
+    right: 20px;
+    max-width: 300px; /* Adjust as needed */
+    z-index: 1;
+}
+
+.historie1 img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* Optional: adds rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: adds subtle shadow */
+}
+.container {
+    position: relative;
+    margin-right: 320px;
+}
+.rental-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0;
+}
+
+.bike-image {
+    width: 20%;
+}
+
+.bike-image img {
+    width: 100%;
+    height: auto;
+}
+
+.rental-table-container {
+    width: 50%;
+}
+
+.rental-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.rental-table th, .rental-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.rental-table th {
+    background-color: #f2f2f2;
+}
+
+.rental-button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.rental-button:hover {
+    background-color: #45a049;
+}
+
+#rental-form {
+    display: none;
+}
+
+.form-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0;
+}
+
+.user-form {
+    width: 45%;
+}
+
+.selected-bikes {
+    width: 45%;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.success-message {
+    display: none;
+    text-align: center;
+    color: green;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.contact-form {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #de7777;
+    border-radius: 4px;
+}
+
+.contact-form button {
+    background: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.contact-form button:hover {
+    background: #45a049;
+}
+
+.contact-info {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.opening-hours {
+    margin-top: 20px;
+}
+
+.opening-hours table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.opening-hours td {
+    padding: 8px;
+    border-bottom: 1px solid #de7777;
+}
+
+.map-container {
+    height: 200px;
+    margin-top: 20px;
+}
+
+.error {
+    color: red;
+    font-size: 0.8em;
+    display: none;
+}

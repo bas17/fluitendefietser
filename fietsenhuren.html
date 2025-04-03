@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fietsen Huren - Fluitende Fietser</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .rental-container {
+            display: flex;
+            justify-content: space-between;
+            margin: 30px 0;
+        }
+        
+        .bike-image {
+            width: 20%;
+        }
+        
+        .bike-image img {
+            width: 100%;
+            height: auto;
+        }
+        
+        .rental-table-container {
+            width: 50%;
+        }
+        
+        .rental-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        
+        .rental-table th, .rental-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        .rental-table th {
+            background-color: #f2f2f2;
+        }
+        
+        .rental-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .rental-button:hover {
+            background-color: #45a049;
+        }
+        
+        #rental-form {
+            display: none;
+        }
+        
+        .form-container {
+            display: flex;
+            justify-content: space-between;
+            margin: 30px 0;
+        }
+        
+        .user-form {
+            width: 45%;
+        }
+        
+        .selected-bikes {
+            width: 45%;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .success-message {
+            display: none;
+            text-align: center;
+            color: green;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+
+<body onload="onStart(); loadBikes()">
+    <header id="header">
+        <div class="logo">
+            <img src="Data2024 (2)/web/images/logo.png" onclick="window.location.href='index.html';" style="cursor:pointer;">
+        </div>
+        
+        <input id="zoekbalk" type="search" placeholder="Zoek hier.">
+        <div class="dropdown">
+            <button class="dropdown-btn" onclick="toggleMenu()">fietsen ⬇️</button>
+            <div class="dropdown-content" id="dropdownMenu">
+                <a href="elektrische-fietsen.html">elektrische fietsen</a>
+                <a href="fietsen.html">normale fietsen</a>
+            </div>
+        </div>
+    </header>
+
+    <br>
+    <br>
+
+    <div class="openingstijden-container">
+        <h2>🕒 Openingstijden Fluitende Fietser 🚲</h2>
+        <ul>
+            <li><span>Maandag:</span> 10:00 - 18:00</li>
+            <li><span>Dinsdag:</span> 09:00 - 18:00</li>
+            <li><span>Woensdag:</span> 09:00 - 18:00</li>
+            <li><span>Donderdag:</span> 09:00 - 20:00 (koopavond)</li>
+            <li><span>Vrijdag:</span> 09:00 - 18:00</li>
+            <li><span>Zaterdag:</span> 10:00 - 17:00</li>
+            <li><span>Zondag:</span> Gesloten</li>
+        </ul>
+    </div>
+
+    <h1 style="text-align: center;">Fietsen Huren bij Fluitende Fietser</h1>
+
+    <!-- Bike selection screen -->
+    <div id="bike-selection">
+        <div class="rental-container">
+            <div class="bike-image">
+                <img src="slideshowtest/istockphoto-171586627-612x612.jpg" alt="Fiets links">
+            </div>
+            
+            <div class="rental-table-container">
+                <table class="rental-table" id="bikes-table">
+                    <thead>
+                        <tr>
+                            <th>Selecteer</th>
+                            <th>Fiets Type</th>
+                            <th>Prijs per dag</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bikes-list">
+                        <!-- Bikes will be loaded here from the text file -->
+                    </tbody>
+                </table>
+                <button class="rental-button" onclick="rentBikes()">Huur de fietsen</button>
+            </div>
+            
+            <div class="bike-image">
+                <img src="slideshowtest/white-T-500-SHIMANO-DEORE-30-GANG-DISC.webp" alt="Fiets rechts">
+            </div>
+        </div>
+    </div>
+
+    <!-- User details form screen -->
+    <div id="rental-form">
+        <div class="form-container">
+            <div class="user-form">
+                <h2>Vul uw gegevens in</h2>
+                <div class="form-group">
+                    <label for="name">Naam:</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Adres:</label>
+                    <input type="text" id="address" required>
+                </div>
+                <div class="form-group">
+                    <label for="city">Stad:</label>
+                    <input type="text" id="city" required>
+                </div>
+                <div class="form-group">
+                    <label for="zipcode">Postcode:</label>
+                    <input type="text" id="zipcode" required>
+                </div>
+                <button class="rental-button" onclick="submitForm()">Gegevens versturen</button>
+            </div>
+            
+            <div class="selected-bikes">
+                <h2>Geselecteerde fietsen</h2>
+                <div id="selected-bikes-list">
+                    <!-- Selected bikes will be displayed here -->
+                </div>
+            </div>
+        </div>
+        
+        <div id="success-message" class="success-message">
+            Gegevens verstuurd
+        </div>
+    </div>
+
+    <footer id="footer">
+        <div id="fietsbeweging">🚲</div>
+
+        <div class="footer-left">
+            <a href="overons.html">Over ons</a>
+            <a href="contact.html">Contact</a>
+            <a href="voorwaarden.html">Algemene voorwaarden</a>
+            <a href="buco.html">buco</a>
+        </div>
+        <div class="footer-left-bottem">
+            <p>KVK: 88599665 | BTW NL999888492Z09</p>
+        </div>
+
+        <div class="footer-right">
+            <a href="https://www.tiktok.com/@yourusername" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.instagram.com/yourusername" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/yourusername" target="_blank"><i class="fab fa-facebook"></i></a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Function to load bikes from a text file
+        function loadBikes() {
+            // In a real implementation, you would fetch this from a text file
+            // For this example, we'll use hardcoded data
+            const bikes = [
+                { type: "Stadsfiets", price: "€15,00" },
+                { type: "Elektrische fiets", price: "€25,00" },
+                { type: "Mountainbike", price: "€20,00" },
+                { type: "Racefiets", price: "€22,00" },
+                { type: "Kinderfiets", price: "€10,00" },
+                { type: "Tandem", price: "€30,00" }
+            ];
+            
+            const bikesList = document.getElementById("bikes-list");
+            bikesList.innerHTML = "";
+            
+            bikes.forEach((bike, index) => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td><input type="checkbox" id="bike-${index}" data-type="${bike.type}" data-price="${bike.price}"></td>
+                    <td>${bike.type}</td>
+                    <td>${bike.price}</td>
+                `;
+                bikesList.appendChild(row);
+            });
+        }
+        
+        // Function to handle bike rental
+        function rentBikes() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            
+            if (checkboxes.length === 0) {
+                alert("Selecteer minimaal één fiets om te huren.");
+                return;
+            }
+            
+            // Show the rental form and hide the bike selection
+            document.getElementById("bike-selection").style.display = "none";
+            document.getElementById("rental-form").style.display = "block";
+            
+            // Display selected bikes
+            const selectedBikesList = document.getElementById("selected-bikes-list");
+            selectedBikesList.innerHTML = "";
+            
+            checkboxes.forEach(checkbox => {
+                const bikeType = checkbox.getAttribute("data-type");
+                const bikePrice = checkbox.getAttribute("data-price");
+                
+                const bikeItem = document.createElement("div");
+                bikeItem.innerHTML = `
+                    <p><strong>${bikeType}</strong> - ${bikePrice} per dag</p>
+                `;
+                selectedBikesList.appendChild(bikeItem);
+            });
+        }
+        
+        // Function to handle form submission
+        function submitForm() {
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const address = document.getElementById("address").value;
+            const city = document.getElementById("city").value;
+            const zipcode = document.getElementById("zipcode").value;
+            
+            // Simple validation
+            if (!name || !email || !address || !city || !zipcode) {
+                alert("Vul alle velden in.");
+                return;
+            }
+            
+            // Show success message
+            document.querySelector(".form-container").style.display = "none";
+            document.getElementById("success-message").style.display = "block";
+        }
+    </script>
+</body>
+</html>
